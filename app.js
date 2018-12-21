@@ -17,6 +17,7 @@ const app = express();
 
 //Load Routes
 const auth = require('./routes/auth')
+const index = require('./routes/index')
 
 //Load keys
 const keys = require('./config/keys')
@@ -62,12 +63,11 @@ app.use((req,res,next) => {
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-app.get('/', (req, res) => {
-  res.render('index/dashboard')
-})
+
 
 //Use Routes
 app.use('/auth', auth);
+app.use('/',index)
 
 
 const PORT = process.env.PORT || 1708;

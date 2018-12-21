@@ -11,10 +11,10 @@ const UserSchema = new Schema({
     type:String,
     required:true
   },
-  firstname:{
-    type:'String'
+  firstName:{
+    type:String
   },
-  lastname : {
+  lastName : {
     type:String
   },
   image:{
