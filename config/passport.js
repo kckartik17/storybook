@@ -38,7 +38,6 @@ module.exports = function (passport) {
               .then(user => done(null, user));
           }
         })
-
     })
   )
 

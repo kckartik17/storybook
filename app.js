@@ -8,7 +8,10 @@ const cookieParser = require('cookie-parser')
 const session = require('express-session')
 
 //Load User model
-require('./models/user')
+require('./models/users')
+
+//Load Stories model
+require('./models/stories')
 
 //Passport Config
 require('./config/passport')(passport);
@@ -23,6 +26,15 @@ const stories = require('./routes/stories')
 //Load keys
 const keys = require('./config/keys')
 
+// Handlebars Helpers
+const {
+  truncate,
+  stripTags,
+  formatDate,
+  select,
+  editIcon
+} = require('./helpers/hbs');
+
 //Mongoose Connect
 mongoose.connect('mongodb://localhost/storybook', {
   useNewUrlParser: true
@@ -36,8 +48,15 @@ mongoose.connect('mongodb://localhost/storybook', {
 
 
 //Handlebars Middlewares
-app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
+app.engine('handlebars', exphbs({helpers: {
+  truncate: truncate,
+  stripTags: stripTags,
+  formatDate:formatDate,
+  select:select,
+  editIcon: editIcon
+}, defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
+
 
 //Body Parser middleware
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -62,8 +81,6 @@ app.use((req,res,next) => {
 
 //Static Folder
 app.use(express.static(path.join(__dirname, 'public')));
-
-
 
 
 //Use Routes
