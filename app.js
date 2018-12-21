@@ -37,7 +37,7 @@ const {
 } = require('./helpers/hbs');
 
 //Mongoose Connect
-mongoose.connect('mongodb://localhost/storybook', {
+mongoose.connect(keys.mongoURI, {
   useNewUrlParser: true
 })
   .then(() => {
