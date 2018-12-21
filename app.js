@@ -1,5 +1,6 @@
 const express = require('express')
 const path = require('path');
+const methodOverride = require('method-override')
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
@@ -45,6 +46,9 @@ mongoose.connect('mongodb://localhost/storybook', {
   .catch(() => {
     console.log('Error in connecting MongoDB')
   })
+
+  //Method Override Middleware
+  app.use(methodOverride('_method'));
 
 
 //Handlebars Middlewares
