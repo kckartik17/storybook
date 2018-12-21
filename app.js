@@ -18,6 +18,7 @@ const app = express();
 //Load Routes
 const auth = require('./routes/auth')
 const index = require('./routes/index')
+const stories = require('./routes/stories')
 
 //Load keys
 const keys = require('./config/keys')
@@ -66,8 +67,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 //Use Routes
-app.use('/auth', auth);
 app.use('/',index)
+app.use('/auth', auth);
+app.use('/stories',stories)
 
 
 const PORT = process.env.PORT || 1708;
