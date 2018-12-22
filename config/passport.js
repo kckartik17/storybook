@@ -89,10 +89,9 @@ module.exports = function (passport) {
     new TwitterStrategy({
       consumerKey: keys.twitterClientID,
       consumerSecret: keys.twitterClientSecret,
-      callbackURL: '/auth/twitter/callback',
-      proxy: true
-    }, (accessToken, refreshToken, profile, done) => {
-      console.log(profile)
+      callbackURL: '/auth/twitter/callback'
+    }, (token, tokenSecret, profile, cb) => {
+      return cb(err, user);
 
     }));
 
