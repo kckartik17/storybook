@@ -1,5 +1,5 @@
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
-const GithubStrategy = require('passport-github')
+const GithubStrategy = require('passport-github').Strategy
 const mongoose = require('mongoose')
 const keys = require('./keys')
 
@@ -60,7 +60,7 @@ module.exports = function (passport) {
         image: image
       }
 
-      
+
 
       //Check for existing user
       User.findOne({
@@ -79,9 +79,6 @@ module.exports = function (passport) {
         })
 
     }));
-
-
-
 
   passport.serializeUser((user, done) => {
     done(null, user.id);
