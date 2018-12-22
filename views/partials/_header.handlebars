@@ -3,7 +3,7 @@
     <div class="nav-wrapper">
       <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="small material-icons">dehaze</i></a>
       <a href="/" class="brand-logo center">StoryBook</a>
-      
+
       <!-- RIGHT NAV -->
       <ul class="right hide-on-small-only">
         {{#if user}}
@@ -15,11 +15,11 @@
       </ul>
       <!-- SIDE MENU -->
       <ul class="sidenav" id="slide-out">
-        {{#if user}} 
+        {{#if user}}
         {{else}}
         <li>
           <a class="btn red darken-1" href="/auth/google"><i class="fa fa-google left"></i> Login With Google</a>
-        
+          <a href="/auth/github" class="btn brown darken-4"><i class="fa fa-github left"></i> Login with Github</a>
         </li>
         {{/if}}
         <li><a class="waves-effect" href="/stories"><i class="fa fa-book"></i> Public Stories</a></li>
@@ -30,7 +30,7 @@
         <li><a class="waves-effect" href="/auth/logout"><i class="fa fa-sign-out"></i> Logout</a></li>
         {{/if}}
       </ul>
-      
+
     </div>
   </div>
 </nav>
