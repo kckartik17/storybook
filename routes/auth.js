@@ -7,7 +7,7 @@ router.get('/google',passport.authenticate('google',{
 }));
 
 router.get('/facebook',passport.authenticate('facebook',{
-  scope:['public_profile']
+  scope:['email']
 }));
 
 router.get('/google/callback',
