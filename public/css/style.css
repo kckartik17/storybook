@@ -36,3 +36,16 @@ footer{
   font-size: 12px !important;
   overflow: hidden;
 }
+
+.welbtn {
+  width:30%;
+}
+
+@media (max-width:420px){
+  .welbtn {
+    font-size: 9px !important;
+    text-align: left;
+  }
+
+
+}
