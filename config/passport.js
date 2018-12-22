@@ -83,6 +83,11 @@ module.exports = function (passport) {
 
 
   //Twitter
+  var trustProxy = false;
+  if (process.env.DYNO) {
+    // Apps on heroku are behind a trusted proxy
+    trustProxy = true;
+  }
 
 
   passport.use(
