@@ -53,9 +53,9 @@ module.exports = function (passport) {
       enableProof: true,
       passReqToCallback:true,
       proxy: true,
-      profileFields:['id','email','name']
+      profileFields:['id']
     }, (accessToken, refreshToken, profile, done) => {
-      console.log(profile.emails)
+      console.log(accessToken)
     })
   )
 
