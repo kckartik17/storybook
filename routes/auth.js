@@ -27,7 +27,9 @@ passport.authenticate('github',{
 })
 
 
-router.get('/facebook',passport.authenticate('facebook'));
+router.get('/facebook',passport.authenticate('facebook',{
+  scope:['public_profile', 'email']
+}));
 router.get('/facebook/callback',
 passport.authenticate('facebook',{
   failureRedirect:'/'
