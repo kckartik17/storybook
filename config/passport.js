@@ -1,5 +1,6 @@
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const GithubStrategy = require('passport-github').Strategy
+const TwitterStrategy = require('passport-twitter').Strategy
 const mongoose = require('mongoose')
 const keys = require('./keys')
 
@@ -77,6 +78,21 @@ module.exports = function (passport) {
               .then(user => done(null, user));
           }
         })
+
+    }));
+
+
+  //Twitter
+
+
+  passport.use(
+    new TwitterStrategy({
+      clientID: keys.twitterClientID,
+      clientSecret: keys.twitterClientSecret,
+      callbackURL: '/auth/twitter/callback',
+      proxy: true
+    }, (accessToken, refreshToken, profile, done) => {
+      console.log(profile)
 
     }));
 
