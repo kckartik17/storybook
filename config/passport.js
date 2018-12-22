@@ -1,4 +1,5 @@
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const FacebookStrategy = require('passport-facebook').Strategy;
 const mongoose = require('mongoose')
 const keys = require('./keys')
 
@@ -6,6 +7,7 @@ const keys = require('./keys')
 const User = mongoose.model('users')
 
 module.exports = function (passport) {
+  //Google Auth
   passport.use(
     new GoogleStrategy({
       clientID: keys.googleClientID,
@@ -38,6 +40,19 @@ module.exports = function (passport) {
               .then(user => done(null, user));
           }
         })
+    })
+  )
+
+
+  //Facebook Auth
+  passport.use(
+    new FacebookStrategy({
+      clientID: keys.facebookClientID,
+      clientSecret: keys.facebookClientSecret,
+      callbackURL: '/auth/facebook/callback',
+      proxy: true
+    }, (accessToken, refreshToken, profile, done) => {
+      console.log(profile)
     })
   )
 
