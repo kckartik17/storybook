@@ -50,12 +50,9 @@ module.exports = function (passport) {
       clientID: keys.facebookClientID,
       clientSecret: keys.facebookClientSecret,
       callbackURL: '/auth/facebook/callback',
-      enableProof: true,
-      passReqToCallback:true,
-      proxy: true,
-      profileFields:['id']
+      profileFields:['emails']
     }, (accessToken, refreshToken, profile, done) => {
-      console.log(accessToken)
+    console.log(profile);
     })
   )
 

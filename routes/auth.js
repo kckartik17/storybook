@@ -6,7 +6,9 @@ router.get('/google',passport.authenticate('google',{
   scope:['profile','email']
 }));
 
-router.get('/facebook',passport.authenticate('facebook'));
+router.get('/facebook',passport.authenticate('facebook',{
+  scope:['email']
+}));
 
 router.get('/google/callback',
 passport.authenticate('google',{
@@ -21,7 +23,8 @@ passport.authenticate('facebook',{
   failureRedirect:'/'
 }),
 (req,res) => {
-  res.redirect('/dashboard')
+  res.send('<h1>Hello Facebook</h1>')
+  // res.redirect('/dashboard')
 })
 
 router.get('/verify',(req,res) => {
