@@ -26,6 +26,16 @@ passport.authenticate('github',{
   res.redirect('/dashboard')
 })
 
+
+router.get('/facebook',passport.authenticate('facebook'));
+router.get('/facebook/callback',
+passport.authenticate('facebook',{
+  failureRedirect:'/'
+}),
+(req,res) => {
+  res.redirect('/dashboard')
+})
+
 router.get('/verify',(req,res) => {
   if(req.user){
     console.log(req.user);

@@ -1,5 +1,6 @@
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const GithubStrategy = require('passport-github').Strategy
+const Strategy = require('passport-facebook').Strategy;
 const mongoose = require('mongoose')
 const keys = require('./keys')
 
@@ -78,6 +79,24 @@ module.exports = function (passport) {
           }
         })
 
+    }));
+
+
+    passport.use(new Strategy({
+      clientID: keys.facebookClientID,
+      clientSecret: keys.facebookClientSecret,
+      callbackURL: '/auth/facebook/callback',
+      profileFields:['id', 'displayName', 'photos', 'email'],
+      enableProof: true
+    },
+    function(accessToken, refreshToken, profile, cb) {
+      // In this example, the user's Facebook profile is supplied as the user
+      // record.  In a production-quality application, the Facebook profile should
+      // be associated with a user record in the application's database, which
+      // allows for account linking and authentication with other identity
+      // providers.
+      console.log(profile)
+      return cb(null, profile);
     }));
 
 
