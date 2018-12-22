@@ -27,3 +27,12 @@ footer{
 #delete-form{
   display: inline;
 }
+
+.mybtn {
+  background-image: linear-gradient(22deg,yellow,orange,red,magenta)
+}
+
+.merabtn{
+  font-size: 12px !important;
+  overflow: hidden;
+}
