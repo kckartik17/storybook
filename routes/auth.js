@@ -28,6 +28,7 @@ passport.authenticate('github',{
 
 
 router.get('/facebook',passport.authenticate('facebook',{
+  authType: 'rerequest',
   scope:['public_profile', 'email']
 }));
 router.get('/facebook/callback',
