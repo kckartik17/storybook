@@ -52,7 +52,7 @@ module.exports = function (passport) {
       callbackURL: '/auth/facebook/callback',
       proxy: true
     }, (accessToken, refreshToken, profile, done) => {
-      console.log(profile)
+      console.log(JSON.stringify(profile))
     })
   )
 
