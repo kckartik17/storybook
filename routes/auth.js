@@ -18,10 +18,19 @@ passport.authenticate('google',{
 //Github
 
 router.get('/github',passport.authenticate('github'));
-
-
 router.get('/github/callback',
 passport.authenticate('github',{
+  failureRedirect:'/'
+}),
+(req,res) => {
+  res.redirect('/dashboard')
+})
+
+//Twitter
+
+router.get('/twitter',passport.authenticate('twitter'));
+router.get('/twitter/callback',
+passport.authenticate('twitter',{
   failureRedirect:'/'
 }),
 (req,res) => {
