@@ -26,18 +26,6 @@ passport.authenticate('github',{
   res.redirect('/dashboard')
 })
 
-//Twitter
-
-router.get('/twitter',passport.authenticate('twitter'));
-router.get('/twitter/callback',
-passport.authenticate('twitter',{
-  failureRedirect:'/'
-}),
-(req,res) => {
-  res.redirect('/dashboard')
-})
-
-
 router.get('/verify',(req,res) => {
   if(req.user){
     console.log(req.user);

@@ -1,6 +1,5 @@
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const GithubStrategy = require('passport-github').Strategy
-const TwitterStrategy = require('passport-twitter').Strategy
 const mongoose = require('mongoose')
 const keys = require('./keys')
 
@@ -82,24 +81,6 @@ module.exports = function (passport) {
     }));
 
 
-  //Twitter
-  var trustProxy = false;
-  if (process.env.DYNO) {
-    // Apps on heroku are behind a trusted proxy
-    trustProxy = true;
-  }
-
-
-  passport.use(
-    new TwitterStrategy({
-      consumerKey: keys.twitterClientID,
-      consumerSecret: keys.twitterClientSecret,
-      callbackURL: 'http://storybk.herokuapp.com/auth/twitter/callback',
-      proxy: trustProxy
-    }, (token, tokenSecret, profile, cb) => {
-      return cb(null, profile);
-
-    }));
 
   passport.serializeUser((user, done) => {
     done(null, user.id);
