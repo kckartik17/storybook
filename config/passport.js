@@ -89,9 +89,10 @@ module.exports = function (passport) {
     new TwitterStrategy({
       consumerKey: keys.twitterClientID,
       consumerSecret: keys.twitterClientSecret,
-      callbackURL: 'http://storybk.herokuapp.com/auth/twitter/callback'
+      callbackURL: 'http://storybk.herokuapp.com/auth/twitter/callback',
+      proxy: trustProxy
     }, (token, tokenSecret, profile, cb) => {
-      console.log(profile)
+      return cb(null, profile);
 
     }));
 
