@@ -15,6 +15,19 @@ passport.authenticate('google',{
   res.redirect('/dashboard')
 })
 
+//Github
+
+router.get('/github',passport.authenticate('github'));
+
+
+router.get('/github/callback',
+passport.authenticate('github',{
+  failureRedirect:'/'
+}),
+(req,res) => {
+  res.redirect('/dashboard')
+})
+
 
 router.get('/verify',(req,res) => {
   if(req.user){

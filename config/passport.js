@@ -1,4 +1,5 @@
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const GithubStrategy = require('passport-github')
 const mongoose = require('mongoose')
 const keys = require('./keys')
 
@@ -41,6 +42,45 @@ module.exports = function (passport) {
         })
     })
   )
+
+  //GITHUB 
+  passport.use(
+    new GithubStrategy({
+      clientID: keys.githubClientID,
+      clientSecret: keys.githubClientSecret,
+      callbackURL: '/auth/github/callback',
+      proxy: true
+    }, (accessToken, refreshToken, profile, done) => {
+      const image = profile.photos[0].value.substring(0, profile.photos[0].value.indexOf('?'));
+
+      const newUser = {
+        googleID: profile.id,
+        firstName: profile.displayName,
+        email: profile.emails[0].value,
+        image: image
+      }
+
+      
+
+      //Check for existing user
+      User.findOne({
+        googleID: profile.id
+      })
+        .then(user => {
+          if (user) {
+            //return user
+            done(null, user)
+          } else {
+            //Create user
+            new User(newUser)
+              .save()
+              .then(user => done(null, user));
+          }
+        })
+
+    }));
+
+
 
 
   passport.serializeUser((user, done) => {
