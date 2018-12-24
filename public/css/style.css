@@ -5,47 +5,45 @@ body {
 }
 
 main {
-  flex:1 0 auto;
+  flex: 1 0 auto;
 }
 
-.nav-wrapper .fa-bars{
-  font-size:25px;
+.nav-wrapper .fa-bars {
+  font-size: 25px;
 }
 
-footer{
-  margin-top:20px;
+footer {
+  margin-top: 20px;
 }
 
-.story-text{
-  height:120px;
+.story-text {
+  height: 120px;
 }
 
-.dash-status{
-  text-transform:capitalize;
+.dash-status {
+  text-transform: capitalize;
 }
 
-#delete-form{
+#delete-form {
   display: inline;
 }
 
 .mybtn {
-  background-image: linear-gradient(22deg,yellow,orange,red,magenta)
+  background-image: linear-gradient(22deg, yellow, orange, red, magenta);
 }
 
-.merabtn{
+.merabtn {
   font-size: 12px !important;
   overflow: hidden;
 }
 
 .welbtn {
-  width:30%;
+  width: 30%;
 }
 
-@media (max-width:420px){
+@media (max-width: 420px) {
   .welbtn {
     font-size: 9px !important;
     text-align: left;
   }
-
-
 }
