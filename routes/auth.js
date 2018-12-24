@@ -32,6 +32,20 @@ router.get(
   }
 );
 
+//Twitter
+router.get("/twitter", passport.authenticate("twitter"));
+router.get(
+  "/twitter/callback",
+  passport.authenticate("twitter", {
+    failureRedirect: "/"
+  }),
+  (req, res) => {
+    res.redirect("/dashboard");
+  }
+);
+
+
+
 router.get(
   "/facebook",
   passport.authenticate("facebook", {
