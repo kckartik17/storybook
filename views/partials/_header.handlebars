@@ -5,7 +5,7 @@
       <a href="#" data-activates="main-menu" data-target="slide-out" class="sidenav-trigger"><i class="small material-icons">dehaze</i></a>
 
       <!-- RIGHT NAV -->
-      <ul class="right hide-on-small-only">
+      <ul class="right">
         {{#if user}}
         <li><a href="/dashboard">Welcome {{user.firstName}}</a></li>
         <li><a href="/auth/logout"><i class="fa fa-sign-out"></i> Logout</a></li>
@@ -13,6 +13,10 @@
         <li><a href="/stories"><i class="fa fa-book"></i> Public Stories</a></li>
         {{/if}}
       </ul>
+
+     
+
+
       <!-- SIDE MENU -->
       <ul class="sidenav" id="slide-out">
         {{#if user}}

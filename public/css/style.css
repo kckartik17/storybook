@@ -46,4 +46,11 @@ footer {
     font-size: 9px !important;
     text-align: left;
   }
+
+}
+
+@media (max-width:440px){
+  .brand-logo {
+    font-size: 25px !important;
+  }
 }
